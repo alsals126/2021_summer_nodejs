@@ -77,5 +77,43 @@ express: http웹서버 + 편리한 추가기능포함   [BasicNode/test7.js]
 * 다른 모듈을 설치할 때 (cannot find module 나올 때 )
 1) 설치방법: npm i express --save    <== 하면 다른 컴퓨터에서도 실행이 된다?
 
-http://localhost:3000/doc/1.html
+http://localhost:3000/doc/1.html   <== 1.html을 보여줘야 하고
+http://localhost:3000/login/   <== login인 화면을 보여줘야 하고
+http://localhost:3000/contact   <== contact인 화면을 보여줘야 하고
+------------------------------------------------------------------------------------
+<< 미들함수(middle
+* 함수이다.
+* 중간에 가로채서 미리 처리하는 것
+* 미들웨어 등록: use() 사용
 
+app.use(): 미들웨어 등록시 사용
+// 라우터
+app.get("/login", callback): 사용자가 get방식으로 login에 접속했을 때
+app.post("/login", cb): 사용자가 post방식으로 login에 접속했을 때
+app.put("/test", cb): 사용자가 put방식(update)으로 test에 접속했을 때
+app.delete("/test", cb): 사용자가 delete방식으로 test에 접속했을 때
+
+1. package.json 만드는 방법: npm init
+--save
+
+-------------------------------------------------------------------
+<< 템플릿 엔진
+: res.write("<html><head><title></title><body>");
+* view(html)를 따로 파일로 만드는 프로그램
+* pug  /ejs
+-------------------------------------------------------------------
+<< node에서 사용자가 입력한 값을 가져오는 방법
+* php $_GET[], $_POST[]
+* jsp: request.getParameter()
+* node
+1. get 방식    http://localhost:3000/login?name=kim
+req.query.이름    <== 이름은 예를 들어, input의 name을 의미
+
+2. post 방식
+req.body.이름    <== post는 body(head, title 이런 태그들이 아님)를 통해 넘어가기 때문에
+
+3. param 방식       
+┌ http://localhost:3000/:kim (한개만 보고 있을 때)
+│ http://localhost:3000/:3   <-- 3번글 보기	 
+└ http://localhost:3000/:5   <-- 5번글 보기	
+req.param.이름
