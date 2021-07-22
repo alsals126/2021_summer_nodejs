@@ -1,0 +1,23 @@
+doctype html
+html 
+    head 
+        title 게인메모장
+    body 
+        form(action="/memo" method="post") 
+            h1 게인메모장
+            P 
+                label 작성자&nbsp;&nbsp;&nbsp;
+                input(type="text" name="mwriter")
+            P 
+                label 작성일시
+                input(type="text" name="mdate")
+            P 
+                lable 내용
+                br 
+                lable &nbsp;&nbsp;
+                input(type="text" name="mcontent")   
+            P 
+                label 사진
+                
+            button(type="submit") 저장
+            button(type="reset") 닫기

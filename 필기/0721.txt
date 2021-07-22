@@ -1,0 +1,45 @@
+* express: http 웹서버 + 추가기능
+* npm init => package.json
+* npm i 모듈이름 --save
+
+* 미들웨어: 중간에 가로채서 실행되는 프로그램
+   app.use()
+
+* 라우터: 경로를 지정해주는 미들웨어
+app.get()   
+app.post()
+-------------------------------------------
+router.get()
+router.post()
+
+* 템플릿 엔진: view 작성하는 거 pug, ejs
+	      res.render()
+* 정적파일: public   /: app.use(express.static())을 써줘야 public을 루트로 지정할 수 있다.
+------------------------------------------------------------------------------------
+<< 사용자가 입력한 값을 받기
+1. get: req.query.이름 (header)
+2. post: req.body.이름 (body)
+3. http://localhost:3000/jsp  <-- req.params.이름
+
+* nodemon (supervisor): 코드가 변경될 때마다 express서버가 자동으로 재시작
+
+readFile()
+writeFile(): overwrite
+appendFile()은 writeFile처럼 overwrite를 하지 않는다.
+------------------------------------------------------------------------------------
+<< 파일업로드
+* multer
+
+form(method="post" action="/upload" enctype="multipart/form-data")
+input(type="file" name="userfile" multiple)
+
+app.post('/upload', upload.array('userfile', 5), function(req,res) {
+// req객체에 files속성 추가
+})
+
+프로젝트이름: language
+readFile, readWrite, readdir
+--------------------------------------------------------------------------------
+1. get: req.query.이름
+2. post: req.body.이름
+3. req.params.이름

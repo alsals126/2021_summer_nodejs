@@ -1,0 +1,12 @@
+
+doctype html
+html 
+    head 
+        title upload 
+    body 
+        form(method="post" action="upload" enctype="multipart/form-data")
+            p 
+                label(for= "name") 파일이름
+                input(type="file" name="image" multiple)
+            p
+                input(type="submit" value="업로드")

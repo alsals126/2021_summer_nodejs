@@ -1,0 +1,31 @@
+<< 파일 업로드: multer
+
+<< 사용자가 입력한 값 받기
+1. get: req.query.이름
+2. post: req.body.이름
+3. /:id : req.params.id로 받기
+----------------------------------------------------------------
+<< public 밑에 uploads 만들 때
+1. destination: function(req, file, cb) {
+      // if(img ==> upload/img) else if(txt ==> upload/txt)
+      cb(null, 'public/uploads/')
+   }
+
+2. res.send(`${req.body.writer} <br/>
+${req.body.date} <br/>
+${req.body.content} <br/>
+<img src="uploads/${req.file.originalname}">`)
+-----------------------------------------------------------------------
+<< 쿠키 / 세션
+1. 쿠키: 클라이언트에 저장 / 세션: 서버에 저장
+2. http://한번 접속하면 접속이 종료
+             재접속: 기존의 정보를 잃어버린다.
+
+3. 쿠키: '아이디와 비밀번호를 저장하시겠습니까?'
+            접속한 사용자의 정보가 웹서버를 통해 사용자의 컴퓨터에 저장되는 정보를 말한다.
+
+4. 노드: cookie-parser이라는 모듈 필요
+    쿠키설정: res.cookie()
+    쿠키확인: req.cookies[쿠키이름]
+
+4. 
