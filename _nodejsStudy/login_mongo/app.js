@@ -1,6 +1,21 @@
 const express = require('express')
-const app = express()
+const mongoose = require('mongoose')
 
+// 1. 접속주소와 db이름 세팅
+mongoose.connect('mongodb://localhost:27017/data', {userNewUrlParser:true, userUnifiedTopology:true})
+
+// 2. db 연결
+const db = mongoose.connection
+
+// 3. event 이용하여 접속
+db.on('err', ()=>{
+    console.log('connection failed')
+})
+db.once('open', ()=>{
+    console.log('connected')
+})
+
+const app = express()
 app.use(express.static(__dirname + '/public'))
 app.set('views', './views')
 app.set('view engine', 'pug')
@@ -8,6 +23,15 @@ app.set('view engine', 'pug')
 app.locals.pretty = true;
 
 app.use(express.urlencoded({extended:true}))
+
+const loginTest = mongoose.Schema({
+    id: String,
+    pw: String,
+    name: String,
+    age: Number
+})
+
+var LoginTest = mongoose.model('login', loginTest)
 
 app.get("/", (req, res)=> {
     let output=`    
@@ -29,8 +53,30 @@ app.get("/", (req, res)=> {
         </html> `;
     res.send(output);
 })
+
 app.get("/regis", (req, res)=> {
     res.render("register")
+})
+app.post("/regis", (req, res)=>{
+    const _id = req.body.id;
+    const _pw = req.body.pw;
+    const _name = req.body.name;
+    const _age = req.body.age;
+
+    new LoginTest({id:_id, pw:_pw, name:_name, age:Number(_age)}).save((err, date)=>{
+        if(err) console.log(err)
+        else {
+            console.log('Saved!!!')
+            res.render('/')
+        }
+    })
+})
+
+app.get("/login", (req,res)=>{
+    res.render('login_view')
+})
+app.post("/login", (req,res)=>{
+    res.render('login_view')
 })
 
 app.listen(3000, () => {

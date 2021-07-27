@@ -3,17 +3,17 @@ html
     head 
         meta(charset='utf8')
     body 
-        form(method='post' action='/')
+        form(method='post' action='/regis')
             P
                 label ID
-                input(type="text") 
+                input(type="text" name="id") 
             P
                 label PW
-                input(type="password")     
+                input(type="password" name="pw")     
             P
                 label NAME
-                input(type="text") 
+                input(type="text" name="name") 
             P
                 label AGE
-                input(type="text") 
+                input(type="text" name="age") 
             input(type="submit", value="REGISTER")
