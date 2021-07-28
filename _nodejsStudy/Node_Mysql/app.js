@@ -87,8 +87,13 @@ app.get('/read/:id', (req, res)=>{
 
 // 6. 수정하기 폼
 app.get('/edit/:id', (req,res)=>{
-    const paramID = req.params.id
-
+    const paramId= req.params.id;
+    conn.query(sql.read,[paramId],(err,data)=>{
+        if(err) console.log(err);
+        else{
+            res.render("edit",{datas:data[0]});
+        }
+    })
 })
 // 7. 수정하기
 app.post('/edit/:id', (req,res)=>{
@@ -99,7 +104,22 @@ app.post('/edit/:id', (req,res)=>{
 
     conn.query(sql.update, [name, emp_number, email, paramID], (err)=>{
         if(err) console.log(err)
-        else res.redirect('/')
+        else{
+            console.log('updated!');
+            res.redirect("/");
+        }
+    })
+})
+
+// 8. 삭제하기
+app.post("/delete/:id",(req,res)=>{
+    const paramId= req.params.id;
+    conn.query(sql.delete,[paramId],(err)=>{
+        if(err) console.log(err);
+        else{
+            console.log('deleted !');
+            res.redirect("/");
+        }
     })
 })
 

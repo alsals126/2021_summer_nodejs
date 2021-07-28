@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>UPDATE <%= rows[0] %></h1>
+    <form class="contact-form" action="/update/<%= rows.id%>" method="post">
+        <div class="form-group">
+            <label for="phone">순번</label>
+            <input type="text" name="id" value="<%= rows.id%>" class="form-control">
+          </div>
+        <div class="form-group">
+          <label for="phone">NAME</label>
+          <input type="text" id="name" name="name" value="<%= rows.name%>" class="form-control">
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="text" id="email" name="email" value="<%= rows.email%>" class="form-control">
+        </div>
+        <div class="form-group">
+            <label for="email">Tel</label>
+            <input type="text" id="tel" name="tel" value="<%= rows.tel%>" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="email">City</label>
+            <input type="text" id="city" name="city" value="<%= rows.city%>" class="form-control">
+          </div>
+        
+        <div>
+          <button type="submit" class="btn btn-primary">UPDATE</button>
+        </div>
+      </form>
+</body>
+</html>

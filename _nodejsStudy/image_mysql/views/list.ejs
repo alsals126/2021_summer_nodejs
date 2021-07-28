@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <tr><td>순번</td><td>파일명</td><td>파일명</td><td>실제파일명</td>
+    <% rows.forEach(function(list){ 
+        var str=list.filename;
+        var str2=str.split("\\")
+        console.log("str2",str2)
+        %>
+        <tr><td><%= list.id %><%= str2[2] %></td><td><img src="/uploads/images/<%= str2[3] %>"></td><td><%= list.filename %></td><td><%= list.originalname %></td></tr>
+   <% })%>
+    </table>
+</body>
+</html>
