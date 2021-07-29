@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table, th, td { border: 1px solid black; border-collapse: collapse }
+        table{margin-left: 10px; font-size: 15px;}
+        td{padding: 7px;}
+        form{display:inline;}
+    </style>
+</head>
+<body>
+    <h1>&nbsp;글 보기</h1>
+    <table>
+        <tr>
+            <td style="width: 60px;">작성자</td>
+            <td style="min-width: 100px"><%= rowsX.name %></td>
+            <td style="width: 60px;">작성일</td>
+            <td style="min-width: 100px;"><%= rowsX.regis_date %></td>
+        </tr>
+        <tr>
+            <td>제목</td>
+            <td colspan="3"><%= rowsX.title %></td>
+        </tr>
+        <tr>
+            <td>내용</td>
+            <td colspan="3" style="padding-bottom: 30px;"><%- rowsX.content.replace(/\n/g, '<br/>') %></td>
+        </tr>
+        <tr>
+            <td>첨부파일</td>
+            <td colspan="3"><a href="/down/<%=rowsX.file %>"><%= rowsX.file %></a></td>
+        </tr>
+        <% if(login == rowsX.user_id){ %> 
+            <tr>
+                <td colspan="4">
+                    <a href='/update/<%= rowsX.id %>'>Edit</a>&nbsp;&nbsp;
+                    <form action="/delete/<%= rowsX.id %>" method="post">
+                        <a href="#" onclick="confirm('Do you want to delete this?')?this.parentElement.submit():null;">Delete</a>
+                    </form>
+                </td>
+            </tr>
+        <% } %>
+    </table>
+</body>
+</html>

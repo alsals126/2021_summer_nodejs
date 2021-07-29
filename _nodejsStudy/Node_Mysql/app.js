@@ -2,6 +2,7 @@ const express = require('express')
 const mysql = require('mysql')
 const format = require('date-format')
 const moment = require('moment')
+const methodOverride = require('method-override')
 require('moment-timezone')
 moment.tz.setDefault("Asia/Seoul")
 

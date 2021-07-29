@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      table, th, td { border: 1px solid black; border-collapse: collapse }
+      input, textarea{margin-right: 100px}
+    </style>
+</head>
+<body>
+  <h1>수정하기</h1>
+  <form action="/update/<%=rows.id%>" method="post">
+    <table>
+      <tr>
+        <td>작성자</td>
+        <td><input type="text" name="name" value="<%= rows.name %>" class="form-control"></td>
+      </tr>
+      <tr>
+        <td>제목</td>
+        <td><input type="text" name="title" value="<%= rows.title %>"></td>
+      </tr>
+      <tr>
+        <td>내용</td>
+        <td><textarea name="content" cols="40" rows="15"><%= rows.content %></textarea></td>
+      </tr>
+      <tr>
+        <td>패스워드</td>
+        <td><input type="password" name="passwd"></td>
+      </tr>
+      <tr>
+        <td colspan="2"><input type="submit" value="수정하기"></td>
+      </tr>
+    </table>
+  </form>
+</body>
+</html>
